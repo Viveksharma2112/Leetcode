@@ -1,20 +1,28 @@
 class Solution {
     public int maxCoins(int[] piles) {
-     Arrays.sort(piles);
-      int left = 0 ; 
-      int right = piles.length-1 ; 
+        Arrays.sort(piles);
 
-      int sum = 0 ; 
+        int right = piles.length - 1;
+        int left = 0;
+        int sum = 0;
 
-      while(left< right){
-        right-- ; 
-        sum += piles[right];
+        int rounds = piles.length / 3;  // you pick this many times
 
-        left++; 
-        right--;
-      }
-        return sum ; 
-        
-       }
-        
+        while (rounds > 0) {
+
+            // Alice picks largest
+            right--;
+
+            // You pick second-largest
+            sum += piles[right];
+            right--;
+
+            // Bob picks smallest
+            left++;
+
+            rounds--;
+        }
+
+        return sum;
     }
+}
