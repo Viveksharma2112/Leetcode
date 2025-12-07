@@ -7,14 +7,7 @@ class Solution {
         count = (high-low)/2;
       }
 
-     if(low %2!=0 && high%2!=0){
-        count = 1+(high-low)/2;
-
-     }
-     if(low%2!=0 && high%2==0){
-        count = 1+(high-low)/2;
-     }
-       if(low%2==0 && high%2!=0){
+     else{
         count = 1+(high-low)/2;
      }
      return count ;
