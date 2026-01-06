@@ -1,9 +1,7 @@
 class Solution {
     public int pivotIndex(int[] nums) {
         int[] nums1 = new int[nums.length];
-        int[] nums2 = new int[nums.length];
         nums1[0] = nums[0];
-        nums2[nums.length-1] = nums[nums.length-1];
         int ans = -1;
 
 
@@ -12,11 +10,12 @@ class Solution {
 
         }
         for(int i = nums.length-2; i>=0 ; i--){
-            nums2[i] = nums[i]+nums2[i+1];
+            nums[i] = nums[i]+nums[i+1];
         }
+        System.out.println(Arrays.toString(nums));
 
         for(int i = 0 ; i< nums.length ; i++){
-            if(nums1[i] ==nums2[i]){
+            if(nums[i] ==nums1[i]){
                 return i;
             }
            
