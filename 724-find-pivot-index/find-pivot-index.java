@@ -11,11 +11,9 @@ class Solution {
             nums1[i] = nums[i] + nums1[i-1];
 
         }
-        System.out.println(Arrays.toString(nums1));
         for(int i = nums.length-2; i>=0 ; i--){
             nums2[i] = nums[i]+nums2[i+1];
         }
-          System.out.println(Arrays.toString(nums2));
 
         for(int i = 0 ; i< nums.length ; i++){
             if(nums1[i] ==nums2[i]){
