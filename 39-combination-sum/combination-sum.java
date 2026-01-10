@@ -15,7 +15,7 @@ class Solution {
         return;
      }
         for(int i = idx ; i<nums.length;i++){
-           
+    
             currsum.add(nums[i]);
             finalsum(result,currsum,nums,i,remtarget-nums[i]);
           currsum.remove(currsum.size()-1);
