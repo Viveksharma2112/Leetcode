@@ -25,9 +25,7 @@ class Solution {
     }
     public void inorder(TreeNode root , List<Integer> ans){
 
-        if(root==null){
-            return;
-        }
+       
 
         if(root!=null){
 
