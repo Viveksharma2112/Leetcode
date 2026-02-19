@@ -18,16 +18,13 @@ class Solution {
                     res[i][j] = Math.max(res[i][j-1], res[i-1][j]);
                 }
 
-                  if(res[i][j] > max){
-                                    max = res[i][j];
-                                     }
-                  }
+                 
 
             }
-          
+        }
         
 
-           return max;
+           return res[c1.length][c2.length];
         
     }
 }
