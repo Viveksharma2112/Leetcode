@@ -7,12 +7,12 @@ class Solution {
 
         for(char ch : s.toCharArray()){
 
-            if(ch =='*' ){
+            if(ch =='*' && !st.isEmpty()){
 
-                if(!st.isEmpty()){
+                
                 st.pop();
 
-                }
+                
                 
             }
             else{
