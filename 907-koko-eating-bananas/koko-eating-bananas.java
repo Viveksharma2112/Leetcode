@@ -17,7 +17,7 @@ class Solution {
 
         long hour = 0 ; 
         for(int pile : piles){
-          hour += ((long)pile + mid - 1) / mid;
+          hour += (long)(pile + mid - 1) / mid;
         }
 
         if(hour<=h){
