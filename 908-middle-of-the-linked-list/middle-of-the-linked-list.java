@@ -21,14 +21,15 @@ class Solution {
 
         int num = 0 ; 
         ListNode temp = head ; 
-        ListNode t = head;
+    
         while(temp!=null){
             temp = temp.next;
             num++;
         }
+        temp = head;
       for(int i = 0 ; i<num/2;i++){
-        t = t.next;
+        temp = temp.next;
       }
-      return t;
+      return temp;
     }
 }
