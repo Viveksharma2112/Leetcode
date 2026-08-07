@@ -1,38 +1,26 @@
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution {
     public int[][] merge(int[][] intervals) {
-        // 1. Agar array khali hai ya 1 hi element hai, wahi return kardo
-        if (intervals.length <= 1) return intervals;
+        // sort
+        // curr pehla 
+        // agar pehle <=curr[i]
 
-        // 2. Sorting: Start time (a[0]) ke hisaab se sort karein
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals,(a,b)-> a[0]-b[0]);
 
-        List<int[]> result = new ArrayList<>();
-        
-        // Pehle interval ko current maan lo
-        int[] currentInterval = intervals[0];
-        result.add(currentInterval);
+        List<int[]> ans = new ArrayList<>();
+        int[] curr = intervals[0];
 
-        for (int[] interval : intervals) {
-            int currentEnd = currentInterval[1]; // Current ka khatam hone ka time
-            int nextStart = interval[0]; // Agle ka shuru hone ka time
-            int nextEnd = interval[1];   // Agle ka khatam hone ka time
+        for(int i =1 ; i< intervals.length; i++){
+            if(intervals[i][0]<=curr[1]){
+                curr[1] = Math.max(curr[1], intervals[i][1]);
 
-            if (nextStart <= currentEnd) { 
-                // OVERLAP HAI: Merge karo
-                // End time badhakar dono mein se jo max hai wo kar do
-                currentInterval[1] = Math.max(currentEnd, nextEnd);
-            } else {
-                // OVERLAP NAHI HAI: Naya interval shuru karo
-                currentInterval = interval;
-                result.add(currentInterval);
+            }
+            else{
+                ans.add(curr);
+                curr = intervals[i];
             }
         }
-
-        // List ko wapas 2D array mein convert karke return karo
-        return result.toArray(new int[result.size()][]);
+        ans.add(curr);
+        return ans.toArray(new int[ans.size()][]);
+        
     }
 }
