@@ -10,7 +10,7 @@ class Solution {
 
         else{
             if(q.peek() < nums[i]){
-                q.remove(q.peek());
+                q.poll();
                 q.add(nums[i]);
             }
         }
