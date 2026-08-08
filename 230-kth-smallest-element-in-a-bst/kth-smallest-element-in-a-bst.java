@@ -15,18 +15,21 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        List<Integer> ans = new ArrayList<>() ;
-        travel(root,ans); 
-        return ans.get(k-1);
 
+        List<Integer> ans  = new ArrayList<>();
+        travel(ans , root,k);
+        return ans.get(k-1);
         
     }
-    public void travel (TreeNode root , List<Integer> ans){
 
-        if(root!=null){
-            travel(root.left, ans); 
-            ans.add(root.val); 
-            travel(root.right, ans);
+    public static void travel(List<Integer> ans,TreeNode root , int k ){
+
+        if(root==null){
+            return ;
         }
+
+        travel(ans,root.left,k);
+        ans.add(root.val);
+        travel(ans,root.right,k);
     }
 }
