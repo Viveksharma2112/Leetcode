@@ -1,0 +1,27 @@
+import java.util.*;
+
+class Solution {
+    public int maxEnvelopes(int[][] envelopes) {
+        // Sort: width asc, height desc
+        Arrays.sort(envelopes, (a, b) -> 
+            a[0] != b[0] ? a[0] - b[0] : b[1] - a[1]
+        );
+        
+        // LIS on heights
+        int[] tails = new int[envelopes.length];
+        int size = 0;
+        
+        for (int[] env : envelopes) {
+            int h = env[1];
+            int lo = 0, hi = size;
+            while (lo < hi) {
+                int mid = lo + (hi - lo) / 2;
+                if (tails[mid] < h) lo = mid + 1;
+                else hi = mid;
+            }
+            tails[lo] = h;
+            if (lo == size) size++;
+        }
+        return size;
+    }
+}
